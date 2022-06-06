@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 @Slf4j
 public class OrderController {
     //定义url
-    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "HTTP://PAYMENT-SERVICE";
     @Resource
     private RestTemplate restTemplate;
     @GetMapping("/consumer/payment/create")

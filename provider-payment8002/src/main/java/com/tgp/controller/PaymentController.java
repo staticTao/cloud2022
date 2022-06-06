@@ -2,15 +2,11 @@ package com.tgp.controller;
 
 import com.tgp.entity.Payment;
 import com.tgp.service.PaymentService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * (Payment)表控制层
@@ -20,7 +16,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("payment")
-@Slf4j
 public class PaymentController {
     /**
      * 服务对象
@@ -29,9 +24,6 @@ public class PaymentController {
     private PaymentService paymentService;
     @Value("${server.port}")
     private String serverPort;
-    @Resource
-    private DiscoveryClient discoveryClient;
-
     /**
      * 通过主键查询单条数据
      *
@@ -78,28 +70,5 @@ public class PaymentController {
         return ResponseEntity.ok(this.paymentService.deleteById(id));
     }
 
-    /**
-     @Description: 服务发现
-     @Author: TGP
-     @Version: v1.0
-     @Date: 2022/6/6 16:25
-     @Param
-     @Return * @return: java.lang.Object
-    **/
-    @GetMapping(value = "/discovery")
-    public Object discovery(){
-        //所有微服务
-        List<String> services = discoveryClient.getServices();
-        services.forEach((e)->{
-            System.out.println("element:"+e);
-        });
-        //获取某个实例对象 遍历出所有的主机信息
-        List<ServiceInstance> instances = discoveryClient.getInstances("PAYMENT-SERVICE");
-        for (ServiceInstance instance : instances) {
-            log.info(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());
-        }
-
-        return this.discoveryClient;
-    }
 }
 
