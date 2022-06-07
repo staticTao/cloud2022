@@ -70,5 +70,9 @@ public class PaymentController {
         return ResponseEntity.ok(this.paymentService.deleteById(id));
     }
 
+    @GetMapping(value = "/lb")
+    public String getPaymentLB() {
+        return serverPort;//返回服务接口
+    }
 }
 
