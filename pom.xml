@@ -18,6 +18,9 @@
     <module>provider-hygtrix-payment8001</module>
       <module>consumer-feign-hystrix-order80</module>
       <module>gateway-gateway9527</module>
+      <module>cloud-stream-rabbitmq-provider8801</module>
+      <module>cloud-stream-rabbitmq-consumer8802</module>
+    <module>cloud-stream-rabbitmq-consumer8803</module>
   </modules>
   <packaging>pom</packaging><!-- 这里添加，注意不是jar或war -->
 

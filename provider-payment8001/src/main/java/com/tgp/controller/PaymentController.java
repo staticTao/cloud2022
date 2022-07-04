@@ -105,5 +105,11 @@ public class PaymentController {
     public String getPaymentLB() {
         return serverPort;//返回服务接口
     }
+
+
+    @GetMapping("/zipkin")
+    public String paymentZipkin() {
+        return "hi ,i'am paymentzipkin server fall back，welcome to here, O(∩_∩)O哈哈~";
+    }
 }
 
